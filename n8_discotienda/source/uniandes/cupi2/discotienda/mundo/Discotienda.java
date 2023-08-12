@@ -475,7 +475,7 @@ public class Discotienda
 
     
     /**
-     * Este metodo sirve para revisar si hay dos discos con el mismo nombre dentro de la tienda.
+     * Este mï¿½todo sirve para revisar si hay dos discos con el mismo nombre dentro de la tienda.
      * @return Retorna true si hay un disco que aparece repetido dentro de la lista de discos. Retorna false en caso contrario.
      */
     private boolean buscarDiscosConElMismoNombre( )
@@ -493,84 +493,8 @@ public class Discotienda
         return false;
     }
     
- // -----------------------------------------------------------------
-    // Trabajo estudiantes
-    // -----------------------------------------------------------------
-/**
- * Generar un informe de discos en la discotienda
- * @throws FileNotFoundException - Cuando no existe la ruta especificada del archivo a leer o escribir
- */
 
-    public void generarInformeDiscos() throws FileNotFoundException
-    {
-    	// Crear el archivo con la clase FILE
-    	File archivo = new File("./data/reporteDiscos.txt");
-    	
-    	// Crear la pluma para escribir el archivo
-    	PrintWriter pluma = new PrintWriter(archivo);
-    	
-    	// Escribir con la pluma en el archivo
-    	pluma.println("Reporte de discos");
-    	pluma.println("=================");
-    	
-    	// Escribir un repote de discos con nombre, artista y género
-    	// =========================================================
-    	
-    	for (int i = 0; i < discos.size(); i++) 
-    	{
-    		// Extraer información de cada disco
-    		Disco miDisco = (Disco)discos.get(i);
-    		
-    		// Escribir con la pluma la información requerida
-    		pluma.println("Nombre: " + miDisco.darNombreDisco() +
-    					  " - Artista: " + miDisco.darArtista() +
-    					  " - Género: " + miDisco.darGenero());
-    	}
-    	
-    	// Cerrar la pluma
-    	pluma.close();
-    }
 
-    /**
-     * Generar un informe de discos en la discotienda
-     * @throws FileNotFoundException - Cuando no existe la ruta especificada del archivo a leer o escribir
-     */
-
-		// Crear el archivo con la clase FILE
-		File archivoD = new File("./data/discosCostosos.txt");
-    
-        public void generarInformeDiscosRockYPop() throws FileNotFoundException
-        {	
-        	// Crear la pluma para escribir el archivo
-        	PrintWriter pluma = new PrintWriter(archivoD);
-        	
-        	// Escribir un repote de discos de genero rockn y pop economicos
-        	// =============================================================
-        	
-        	for (int i = 0; i < discos.size(); i++) 
-        	{
-        		// Extraer información de cada disco
-        		Disco miDisco = (Disco)discos.get(i);
-        		
-        		// Escribir con la pluma la información requerida
-        		String genero = miDisco.darGenero( );
-        		
-        		if (genero.equals( "Rock" ) || genero.equals( "Pop" )) 
-        		{	
-        			if (miDisco.darPrecioDisco() < 10000) 
-        			{	
-        			pluma.println("=====================================" + "\n" +
-        						  "- Nombre: " + miDisco.darNombreDisco() + "\n" +
-	        					  "- Genero: " + miDisco.darGenero() + "\n" +
-	        					  "- Precio: " + miDisco.darPrecioDisco() + "\n" +
-	        					  "");
-	        		}
-        		}		
-	        } 
-        	// Cerrar la pluma
-        	pluma.close();
-        }
-    
     // -----------------------------------------------------------------
     // Puntos de Extensiï¿½n
     // -----------------------------------------------------------------
@@ -579,21 +503,9 @@ public class Discotienda
      * Es el punto de extensiï¿½n 1
      * @return respuesta 1
      */
-    
-    public static void eliminarArchivoRockYPop( )
-    {
-    	File archivoD = new File("./data/discosCostosos.txt");
-    	archivoD.delete();
-    }
-        
     public String metodo1( )
     {
-        try {
-        	generarInformeDiscos();
-        	return "Reporte generado satisfactoriamente";
-        } catch(Exception e) {
-        	return "error fatal :(" + e.getMessage();
-        }
+        return "respuesta 1";
     }
 
     /**
@@ -602,25 +514,7 @@ public class Discotienda
      */
     public String metodo2( )
     {
-    	try 
-    	{
-    		generarInformeDiscosRockYPop();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-    	
-    	if(archivoD.length() > 0)
-    	{
-    		try {
-    			return "Reporte generado satisfactoriamente";
-        	} catch (Exception e) {
-               	return "Error fatal :( " + e.getMessage();
-           	}
-    	}
-    	else{
-    		eliminarArchivoRockYPop( );
-    		return "No hay datos para agregar al archivo";
-    	}
+    	return "respuesta 2";
     }
 
     /**
@@ -635,7 +529,7 @@ public class Discotienda
     /**
      * Es el punto de extensiï¿½n 4
      * @return respuesta 4
-     9*/
+     */
     public String metodo4( )
     {
         return "respuesta 4";

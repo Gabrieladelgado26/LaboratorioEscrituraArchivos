@@ -526,9 +526,50 @@ public class Discotienda
     					  " - Artista: " + miDisco.darArtista() +
     					  " - Género: " + miDisco.darGenero());
     	}
-    	
+ 
     	// Cerrar la pluma
     	pluma.close();
+    }
+    
+    /**
+     * Generar un informe de discos en la discotienda
+     * @throws FileNotFoundException - Cuando no existe la ruta especificada del archivo a leer o escribir
+     */
+    
+    // Crear el archivo con la clase FILE
+ 	File archivoD = new File("./data/discosCostosos.txt");
+     
+    public void generarInformeDiscosRockYPop() throws FileNotFoundException
+    {	
+         // Crear la pluma para escribir el archivo
+         PrintWriter pluma = new PrintWriter(archivoD);
+         	
+         // Escribir un repote de discos de genero rock y pop economicos
+         // =============================================================
+         	
+         for (int i = 0; i < discos.size(); i++) 
+         {
+        	// Extraer información de cada disco
+         	Disco miDisco = (Disco)discos.get(i);
+         		
+         	String genero = miDisco.darGenero( );
+         	double precio = miDisco.darPrecioDisco();
+         		
+         	// Condicionales para generar informe de discos ROCK y POP y que el precio no supere los mil pesos
+         	if (genero.equals( "Rock" ) || genero.equals( "Pop" )) 
+         	{	
+         		if (precio < 1000) 
+         		{	
+         			pluma.println("=====================================" + "\n" +
+         						  "- Nombre: " + miDisco.darNombreDisco() + "\n" +
+ 	        					  "- Genero: " + miDisco.darGenero() + "\n" +
+ 	        					  "- Precio: " + miDisco.darPrecioDisco() + "\n" +
+ 	        					  "");
+ 	        	}
+         	}		
+ 	     } 
+      // Cerrar la pluma
+         pluma.close();
     }
     
     // -----------------------------------------------------------------

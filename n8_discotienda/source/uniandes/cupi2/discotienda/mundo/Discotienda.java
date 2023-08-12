@@ -572,6 +572,16 @@ public class Discotienda
          pluma.close();
     }
     
+    /**
+     * Metodo para eliminar archivoD en caso de que no hayan discos con las condiciones establecidas
+     * @return Mensaje vacio
+     */
+    public String eliminarArchivoRockYPop( )
+    {
+    	archivoD.delete();
+    	return "";
+    }
+    
     // -----------------------------------------------------------------
     // Puntos de Extensi�n
     // -----------------------------------------------------------------
@@ -596,7 +606,25 @@ public class Discotienda
      */
     public String metodo2( )
     {
-    	return "respuesta 2";
+    	try 
+    	{
+    		generarInformeDiscosRockYPop();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+    	
+    	if(archivoD.length() > 0)
+    	{
+    		try {
+    			return "Reporte generado satisfactoriamente";
+        	} catch (Exception e) {
+               	return "Error fatal :( " + e.getMessage();
+           	}
+    	}
+    	else{
+    		eliminarArchivoRockYPop( );
+    		return "No hay datos para agregar al archivo";
+    	}
     }
 
     /**

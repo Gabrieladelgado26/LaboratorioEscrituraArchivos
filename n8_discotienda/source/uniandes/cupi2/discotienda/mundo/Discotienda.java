@@ -493,8 +493,44 @@ public class Discotienda
         return false;
     }
     
+	// -----------------------------------------------------------------
+	// Trabajo estudiantes
+	// -----------------------------------------------------------------
+	/**
+	 * Generar un informe de discos en la discotienda
+	 * @throws FileNotFoundException - Cuando no existe la ruta especificada del archivo a leer o escribir
+	 */
 
-
+    public void generarInformeDiscos() throws FileNotFoundException
+    {
+    	// Crear el archivo con la clase FILE
+    	File archivo = new File("./data/reporteDiscos.txt");
+    	
+    	// Crear la pluma para escribir el archivo
+    	PrintWriter pluma = new PrintWriter(archivo);
+    	
+    	// Escribir con la pluma en el archivo
+    	pluma.println("Reporte de discos");
+    	pluma.println("=================");
+    	
+    	// Escribir un repote de discos con nombre, artista y género
+    	// =========================================================
+    	
+    	for (int i = 0; i < discos.size(); i++) 
+    	{
+    		// Extraer información de cada disco
+    		Disco miDisco = (Disco)discos.get(i);
+    		
+    		// Escribir con la pluma la información requerida
+    		pluma.println("Nombre: " + miDisco.darNombreDisco() +
+    					  " - Artista: " + miDisco.darArtista() +
+    					  " - Género: " + miDisco.darGenero());
+    	}
+    	
+    	// Cerrar la pluma
+    	pluma.close();
+    }
+    
     // -----------------------------------------------------------------
     // Puntos de Extensi�n
     // -----------------------------------------------------------------
@@ -505,7 +541,12 @@ public class Discotienda
      */
     public String metodo1( )
     {
-        return "respuesta 1";
+    	try {
+        	generarInformeDiscos();
+        	return "Reporte generado satisfactoriamente";
+        } catch(Exception e) {
+        	return "error fatal :(" + e.getMessage();
+        }
     }
 
     /**

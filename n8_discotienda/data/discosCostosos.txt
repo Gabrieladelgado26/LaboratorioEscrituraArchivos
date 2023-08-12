@@ -1,0 +1,15 @@
+=====================================
+- Nombre: Confessions on a Dance Floor
+- Genero: Pop
+- Precio: 3600.0
+
+=====================================
+- Nombre: Is This It
+- Genero: Rock
+- Precio: 3600.0
+
+=====================================
+- Nombre: Elephant
+- Genero: Rock
+- Precio: 2600.0
+

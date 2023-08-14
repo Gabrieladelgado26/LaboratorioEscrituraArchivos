@@ -572,16 +572,6 @@ public class Discotienda
          pluma.close();
     }
     
-    /**
-     * Metodo para eliminar archivoD en caso de que no hayan discos con las condiciones establecidas
-     * @return Mensaje vacio
-     */
-    public String eliminarArchivoRockYPop( )
-    {
-    	archivoD.delete();
-    	return "";
-    }
-    
     // -----------------------------------------------------------------
     // Puntos de Extensi�n
     // -----------------------------------------------------------------
@@ -622,7 +612,7 @@ public class Discotienda
            	}
     	}
     	else{
-    		eliminarArchivoRockYPop( );
+    		archivoD.delete();
     		return "No hay datos para agregar al archivo";
     	}
     }

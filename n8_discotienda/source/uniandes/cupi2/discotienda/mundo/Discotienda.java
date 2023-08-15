@@ -530,23 +530,21 @@ public class Discotienda
     	// Cerrar la pluma
     	pluma.close();
     }
-    
-    /**
-     * Generar un informe de discos en la discotienda
-     * @throws FileNotFoundException - Cuando no existe la ruta especificada del archivo a leer o escribir
-     */
-    
+
     // Crear el archivo con la clase FILE
  	File archivoD = new File("./data/discosCostosos.txt");
      
-    public void generarInformeDiscosRockYPop() throws FileNotFoundException
+    /**
+     * @throws FileNotFoundException
+     * @throws IllegalArgumentException 
+     */
+    public void generarInformeDiscosRockYPop() throws FileNotFoundException, IllegalArgumentException
     {	
          // Crear la pluma para escribir el archivo
          PrintWriter pluma = new PrintWriter(archivoD);
-         	
-         // Escribir un repote de discos de genero rock y pop economicos
-         // =============================================================
-         	
+         
+         boolean discosCompatibles = false;
+         
          for (int i = 0; i < discos.size(); i++) 
          {
         	// Extraer información de cada disco
@@ -554,22 +552,30 @@ public class Discotienda
          		
          	String genero = miDisco.darGenero( );
          	double precio = miDisco.darPrecioDisco();
-         		
+         	
+            // Escribir un repote de discos de genero rock y pop economicos
+            // =============================================================
+         	
          	// Condicionales para generar informe de discos ROCK y POP y que el precio no supere los mil pesos
-         	if (genero.equals( "Rock" ) || genero.equals( "Pop" )) 
+         	if ((genero.equals("Rock") || genero.equals("Pop")) && precio <= 1000) 
          	{	
-         		if (precio < 1000) 
-         		{	
          			pluma.println("=====================================" + "\n" +
          						  "- Nombre: " + miDisco.darNombreDisco() + "\n" +
  	        					  "- Genero: " + miDisco.darGenero() + "\n" +
  	        					  "- Precio: " + miDisco.darPrecioDisco() + "\n" +
  	        					  "");
- 	        	}
+         			discosCompatibles = true;
          	}		
- 	     } 
+ 		}
+         
+         //Evalua si hay discos disponibles, de lo contrario se lanzara un mensaje informando del error
+         if (discosCompatibles == false) 
+         {
+        	 throw new IllegalArgumentException("No hay discos que coincidan con las caracteristicas propuestas");
+         }
       // Cerrar la pluma
          pluma.close();
+         
     }
     
     // -----------------------------------------------------------------
@@ -594,30 +600,18 @@ public class Discotienda
      * Es el punto de extensi�n 2
      * @return respuesta 2
      */
-    public String metodo2( )
-    {
-    	try 
+    public String metodo2() {
+        try 
     	{
     		generarInformeDiscosRockYPop();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-    	
-    	if(archivoD.length() > 0)
-    	{
-    		try {
-    			return "Reporte generado satisfactoriamente";
-        	} catch (Exception e) {
-               	return "Error fatal :( " + e.getMessage();
-           	}
-    	}
-    	else{
-    		archivoD.delete();
-    		return "No hay datos para agregar al archivo";
-    	}
+    		return "Reporte generado satisfactoriamente";
+		} catch(Exception e) {
+        	return e.getMessage();
+        }
     }
-
+    
     /**
+     * 
      * Es el punto de extensi�n 3
      * @return respuesta 3
      */

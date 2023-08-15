@@ -530,9 +530,6 @@ public class Discotienda
     	// Cerrar la pluma
     	pluma.close();
     }
-
-    // Crear el archivo con la clase FILE
- 	File archivoD = new File("./data/discosCostosos.txt");
      
     /**
      * @throws FileNotFoundException
@@ -540,6 +537,9 @@ public class Discotienda
      */
     public void generarInformeDiscosRockYPop() throws FileNotFoundException, IllegalArgumentException
     {	
+        // Crear el archivo con la clase FILE
+     	File archivoD = new File("./data/discosCostosos.txt");
+     	
          // Crear la pluma para escribir el archivo
          PrintWriter pluma = new PrintWriter(archivoD);
          

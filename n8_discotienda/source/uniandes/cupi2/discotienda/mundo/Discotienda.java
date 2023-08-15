@@ -543,13 +543,16 @@ public class Discotienda
          // Crear la pluma para escribir el archivo
          PrintWriter pluma = new PrintWriter(archivoD);
          
+         // Variable de tipo boolean para validar la excepción en caso de que no hayan discos de rock y pop que no superen los 1000 pesos en su precio
          boolean discosCompatibles = false;
          
+         // Ciclo for que recorre el tamaño de discos
          for (int i = 0; i < discos.size(); i++) 
          {
         	// Extraer información de cada disco
          	Disco miDisco = (Disco)discos.get(i);
          		
+         	// Variables que piden y guardan el genero y precio de discos
          	String genero = miDisco.darGenero( );
          	double precio = miDisco.darPrecioDisco();
          	
